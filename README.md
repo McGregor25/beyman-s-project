@@ -1,1 +1,0 @@
-# beyman-s-project
