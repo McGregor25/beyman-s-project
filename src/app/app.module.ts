@@ -3,11 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DynamicFormModule } from 'src/shared/dynamic-components';
+import {
+  DynamicFormModule,
+  MaterialCardModule,
+} from 'src/shared/dynamic-components';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, DynamicFormModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    DynamicFormModule,
+    MaterialCardModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

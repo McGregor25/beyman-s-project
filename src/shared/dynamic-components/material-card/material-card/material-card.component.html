@@ -1,0 +1,17 @@
+<div class="material-card" class="{{ type || 'filled' }}">
+  <div class="material-card-header">
+    <span class="material-card-title">
+      {{ title }}
+    </span>
+    <span class="material-card-subtitle">
+      {{ subtitle }}
+    </span>
+    <ng-content select="[material-card-header]"></ng-content>
+  </div>
+  <div class="material-card-content">
+    <ng-content></ng-content>
+  </div>
+  <div class="material-card-footer">
+    <ng-content select="[material-card-footer]"></ng-content>
+  </div>
+</div>
