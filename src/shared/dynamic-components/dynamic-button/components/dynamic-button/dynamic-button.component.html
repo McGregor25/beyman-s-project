@@ -1,0 +1,163 @@
+<md-elevated-button
+  [attr.leading-icon]="iconPosition === 'leading-icon' ? true : null"
+  [attr.trailing-icon]="iconPosition === 'trailing-icon' ? true : null"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  variant="tertiary"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="buttonLabel"> </ng-container>
+  <ng-container [ngTemplateOutlet]="slotIcon"> </ng-container>
+</md-elevated-button>
+
+<md-filled-button
+  [attr.leading-icon]="iconPosition === 'leading-icon' ? true : null"
+  [attr.trailing-icon]="iconPosition === 'trailing-icon' ? true : null"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="buttonLabel"> </ng-container>
+  <ng-container [ngTemplateOutlet]="slotIcon"> </ng-container>
+</md-filled-button>
+
+<md-tonal-button
+  [attr.leading-icon]="iconPosition === 'leading-icon' ? true : null"
+  [attr.trailing-icon]="iconPosition === 'trailing-icon' ? true : null"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="buttonLabel"> </ng-container>
+  <ng-container [ngTemplateOutlet]="slotIcon"> </ng-container>
+</md-tonal-button>
+
+<md-outlined-button
+  [attr.leading-icon]="iconPosition === 'leading-icon' ? true : null"
+  [attr.trailing-icon]="iconPosition === 'trailing-icon' ? true : null"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="buttonLabel"> </ng-container>
+  <ng-container [ngTemplateOutlet]="slotIcon"> </ng-container>
+</md-outlined-button>
+
+<md-text-button
+  [attr.leading-icon]="iconPosition === 'leading-icon' ? true : null"
+  [attr.trailing-icon]="iconPosition === 'trailing-icon' ? true : null"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="buttonLabel"> </ng-container>
+  <ng-container [ngTemplateOutlet]="slotIcon"> </ng-container>
+</md-text-button>
+
+<md-standard-icon-button
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="normalIcon"> </ng-container>
+</md-standard-icon-button>
+
+<md-outlined-icon-button
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="normalIcon"> </ng-container>
+</md-outlined-icon-button>
+
+<md-filled-icon-button
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="normalIcon"> </ng-container>
+</md-filled-icon-button>
+
+<md-filled-tonal-icon-button
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  class="{{ size || '' }}"
+>
+  <ng-container [ngTemplateOutlet]="normalIcon"> </ng-container>
+</md-filled-tonal-icon-button>
+
+<md-fab
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.href]="href || null"
+  [attr.target]="target || null"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+  (click)="click($event)"
+  [variant]="variant"
+  [size]="size"
+  [label]="label"
+>
+  <ng-container [ngTemplateOutlet]="slotIcon"> </ng-container>
+</md-fab>
+
+<ng-template #buttonLabel> {{ label }}</ng-template>
+<ng-template #slotIcon> <md-icon slot="icon">check</md-icon></ng-template>
+<ng-template #normalIcon>
+  <md-icon>check</md-icon>
+</ng-template>

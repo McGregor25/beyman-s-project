@@ -1,6 +1,8 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { MaterialPaletteGeneratorService } from 'src/shared/dynamic-components/material-palette-generator/services/material-palette-generator.service';
-
+import { appRootActions } from './store/actions';
+import { Store } from '@ngrx/store';
+import { defaultImage } from './image';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,30 +10,48 @@ import { MaterialPaletteGeneratorService } from 'src/shared/dynamic-components/m
 })
 export class AppComponent implements AfterViewInit {
   title = 'beyman-s-project';
-
+  public defaultImage: string = '';
   constructor(
-    public materialPaletteGeneratorService: MaterialPaletteGeneratorService
+    public materialPaletteGeneratorService: MaterialPaletteGeneratorService,
+    private store: Store
   ) {}
 
   public ngAfterViewInit(): void {
+    this.defaultImage = defaultImage;
     setTimeout(() => {
-      this.materialPaletteGeneratorService.getImagePalette();
+      this.generatePalette();
+      const host: any = document.querySelector(':host');
     }, 2000);
   }
 
   public setImage(event: any) {
     const imgFile: any = document.getElementById('imageBackground');
+    const imgFile1: any = document.getElementById('imageBackground1');
 
     const files = event.srcElement.files;
     if (imgFile && FileReader && files && files.length) {
       var fr = new FileReader();
-      fr.onload = () => {
+      fr.onload = async () => {
         imgFile.src = fr.result;
-        setTimeout(() => {
-          this.materialPaletteGeneratorService.getImagePalette();
-        }, 2000);
+        imgFile1.src = fr.result;
+        this.generatePalette();
       };
       fr.readAsDataURL(files[0]);
     }
+  }
+
+  public async generatePalette() {
+    this.materialPaletteGeneratorService.getImagePalette();
+    // const themes = await this.materialPaletteGeneratorService.getImagePalette();
+
+    // this.store.dispatch(
+    //   appRootActions.saveThemes({
+    //     themes,
+    //   })
+    // );
+  }
+
+  logev(e: MouseEvent) {
+    console.log(e);
   }
 }

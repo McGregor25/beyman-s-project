@@ -1,15 +1,438 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@include mat.core();
+
+:root {
+  --md-ref-typeface-plain: 'Poppins', sans-serif !important;
+  --md-switch-unselected-track-color: var(--outlineVariant) !important;
+  --md-switch-unselected-track-outline-color: var(--outlineVariant) !important;
+  --md-checkbox-container-size: 28px;
+
+  --md-checkbox-container-shape-start-start: 20px;
+  --md-checkbox-container-shape-start-end: 20px;
+  --md-checkbox-container-shape-end-end: 20px;
+  --md-checkbox-container-shape-end-start: 20px;
+}
+
+.outline,
+.background {
+  border-radius: 20px !important;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--onBackground);
+  height: fit-content !important;
+}
+
+$light-base-background: #580c0c;
+$light-secondary-background: #531111;
+
+$dark-base-background: #000;
+$dark-secondary-background: #ede0dc;
+
+// Background palette for light themes.
+$light-theme-background-palette: (
+  status-bar: var(--surfaceVariant),
+  app-bar: var(--surfaceVariant),
+  background: var(--surfaceVariant),
+  hover: rgba(black, 0.04),
+  // TODO(kara): check style with Material Design UX
+  card: white,
+  dialog: var(surfaceVariant),
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: var(--surfaceVariant),
+  selected-button: var(--surfaceVariant),
+  selected-disabled-button: var(--surfaceVariant),
+  disabled-button-toggle: var(--surfaceVariant),
+  unselected-chip: var(--surfaceVariant),
+  disabled-list-option: var(--surfaceVariant),
+  tooltip: var(--primary),
+);
+
+// Background palette for dark themes.
+$dark-theme-background-palette: (
+  status-bar: var(--background),
+  app-bar: var(--background),
+  background: var(--surfaceVariant),
+  hover: rgba(white, 0.04),
+  // TODO(kara): check style with Material Design UX
+  card: #000,
+  dialog: var(--background),
+  disabled-button: rgba(white, 0.12),
+  raised-button: var(--background),
+  focused-button: var(--background),
+  selected-button: var(--background),
+  selected-disabled-button: var(--background),
+  disabled-button-toggle: black,
+  unselected-chip: var(--background),
+  disabled-list-option: rgba(white, 0.12),
+  tooltip: var(--background),
+);
+
+// Foreground palette for light themes.
+$light-theme-foreground-palette: (
+  base: black,
+  divider: var(--outline),
+  dividers: var(--outline),
+  disabled: #000000,
+  disabled-button: rgba(black, 0.26),
+  disabled-text: #000000,
+  elevation: black,
+  hint-text: #000000,
+  secondary-text: #000000,
+  icon: var(--onBackground),
+  icons: var(--onBackground),
+  text: var(--onBackground),
+  slider-min: var(--onBackground),
+  slider-off: var(--onBackground),
+  slider-off-active: var(--onBackground),
+);
+
+// Foreground palette for dark themes.
+$dark-theme-foreground-palette: (
+  base: var(--onBackground),
+  divider: var(--outline),
+  dividers: var(--outline),
+  disabled: var(--outline),
+  disabled-button: var(--onBackground),
+  disabled-text: var(--outline),
+  elevation: black,
+  hint-text: var(--outline),
+  secondary-text: var(--outline),
+  icon: var(--onBackground),
+  icons: var(--onBackground),
+  text: var(--onPrimary),
+  slider-min: var(--onBackground),
+  slider-off: var(--onBackground),
+  slider-off-active: var(--onBackground),
+);
+
+
+$beyman-s-project-primary: (
+  50: var(--primary-50),
+  100: var(--primary-100),
+  200: var(--primary-200),
+  300: var(--primary-300),
+  400: var(--primary-400),
+  500: var(--primary-500),
+  600: var(--primary-600),
+  700: var(--primary-700),
+  800: var(--primary-800),
+  900: var(--primary-900),
+  contrast: (50: var(--primary-contrast-50),
+    100: var(--primary-contrast-100),
+    200: var(--primary-contrast-200),
+    300: var(--primary-contrast-300),
+    400: var(--primary-contrast-400),
+    500: var(--primary-contrast-500),
+    600: var(--primary-contrast-600),
+    700: var(--primary-contrast-700),
+    800: var(--primary-contrast-800),
+    900: var(--primary-contrast-900),
+  ),
+  default: var(--primary),
+  lighter: var(--primary-100),
+  darker: var(--primary-700),
+  text: var(--primary),
+  default-contrast: var(--on-primary),
+  lighter-contrast: var(--on-primary-100),
+  darker-contrast: var(--on-primary-700)
+);
+
+$beyman-s-project-accent: (
+  50: var(--accent-50),
+  100: var(--accent-100),
+  200: var(--accent-200),
+  300: var(--accent-300),
+  400: var(--accent-400),
+  500: var(--accent-500),
+  600: var(--accent-600),
+  700: var(--accent-700),
+  800: var(--accent-800),
+  900: var(--accent-900),
+  contrast: (50: var(--accent-contrast-50),
+    100: var(--accent-contrast-100),
+    200: var(--accent-contrast-200),
+    300: var(--accent-contrast-300),
+    400: var(--accent-contrast-400),
+    500: var(--accent-contrast-500),
+    600: var(--accent-contrast-600),
+    700: var(--accent-contrast-700),
+    800: var(--accent-contrast-800),
+    900: var(--accent-contrast-900),
+  ),
+  default: var(--accent),
+  lighter: var(--accent-100),
+  darker: var(--accent-700),
+  text: var(--accent),
+  default-contrast: var(--on-accent),
+  lighter-contrast: var(--on-accent-100),
+  darker-contrast: var(--on-accent-700)
+);
+
+$beyman-s-project-warn: (
+  50: var(--warn-50),
+  100: var(--warn-100),
+  200: var(--warn-200),
+  300: var(--warn-300),
+  400: var(--warn-400),
+  500: var(--warn-500),
+  600: var(--warn-600),
+  700: var(--warn-700),
+  800: var(--warn-800),
+  900: var(--warn-900),
+  contrast: (50: var(--warn-contrast-50),
+    100: var(--warn-contrast-100),
+    200: var(--warn-contrast-200),
+    300: var(--warn-contrast-300),
+    400: var(--warn-contrast-400),
+    500: var(--warn-contrast-500),
+    600: var(--warn-contrast-600),
+    700: var(--warn-contrast-700),
+    800: var(--warn-contrast-800),
+    900: var(--warn-contrast-900),
+  ),
+  default: var(--warn),
+  lighter: var(--warn-100),
+  darker: var(--warn-700),
+  text: var(--warn),
+  default-contrast: var(--on-warn),
+  lighter-contrast: var(--on-warn-100),
+  darker-contrast: var(--on-warn-700)
+);
+
+
+
+
+
+$beyman-s-project-typography: mat.define-typography-config($font-family: 'Poppins', );
+
+// $beyman-s-project-theme: mat.define-light-theme((color: (primary: mat.define-palette($beyman-s-project-primary, 900),
+//         accent: mat.define-palette($beyman-s-project-accent, 900),
+//         warn: mat.define-palette($beyman-s-project-warn, 900),
+//       ),
+//       typography: $beyman-s-project-typography,
+//     ));
+
+
+
+// @include mat.all-component-themes($beyman-s-project-theme);
+$beyman-s-project-theme: (
+  color: (primary: mat.define-palette($beyman-s-project-primary, 400),
+    accent: mat.define-palette($beyman-s-project-accent, 400),
+    warn: mat.define-palette($beyman-s-project-warn, 400),
+    is-dark: false,
+    foreground: $light-theme-foreground-palette,
+    background: $light-theme-background-palette,
+  ),
+  typography: $beyman-s-project-typography,
+);
+
+@include mat.all-component-themes($beyman-s-project-theme);
+
+// Apply the dark theme by default
+@include mat.core-theme($beyman-s-project-theme);
+@include mat.button-theme($beyman-s-project-theme);
+
+body.dark {
+  $beyman-s-project-theme: (color: (primary: mat.define-palette($beyman-s-project-primary, 400),
+      accent: mat.define-palette($beyman-s-project-accent, 400),
+      warn: mat.define-palette($beyman-s-project-warn, 400),
+      is-dark: true,
+      foreground: $dark-theme-foreground-palette,
+      background: $dark-theme-background-palette,
+    ),
+    typography: $beyman-s-project-typography,
+  );
+
+  @include mat.all-component-themes($beyman-s-project-theme);
+
+  // Apply the dark theme by default
+  @include mat.core-theme($beyman-s-project-theme);
+  @include mat.button-theme($beyman-s-project-theme);
+}
+
 /* You can add global styles to this file, and also import other style files */
 html {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .material-symbols-rounded {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 700,
-        'GRAD' 200,
-        'opsz' 48
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('./assets/scss/bootstrap-grids.scss');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.mat-mdc-card {
+  background: var(--md-sys-color-inverse-on-surface) !important;
+  color: var(--onSurfaceVariant);
+}
+
+.mdc-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: none !important;
+  margin: 35px;
+  padding: 35px;
+  border-radius: 35px !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #9e9e9e25;
+}
+
+
+// .mat-mdc-raised-button,
+// .mat-mdc-unelevated-button {
+//   &.mat-unthemed:not([disabled]) {
+//     --mdc-protected-button-container-color: var(--background) !important;
+//     background: var(--background) !important;
+
+//     --mdc-protected-button-label-text-color: var(--onBackground) !important;
+//     color: var(--onBackground) !important;
+//   }
+// }
+
+
+
+// .mdc-button--raised,
+// .mdc-button--unelevated,
+// .mdc-fab {
+
+//   &.mat-primary {
+//     color: var(--onPrimary) !important;
+//   }
+
+//   &.mat-accent {
+//     color: var(--onSecondary) !important;
+//   }
+
+//   &.mat-warn {
+//     color: var(--onError) !important;
+//   }
+// }
+
+
+
+.mat-mdc-option {
+  color: var(--onBackground) !important;
+}
+
+div.mat-mdc-select-panel {
+  background-color: var(--background) !important;
+  color: var(--onBackground) !important;
+}
+
+md-icon {
+  font-family: 'Material Icons';
+}
+
+
+
+
+// CHECKBOX
+
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__track {
+  height: var(--mdc-switch-track-height, 32px) !important;
+  min-width: 52px !important;
+  border-radius: 24px !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__handle-track {
+  width: 24px !important;
+  left: 4px !important;
+}
+
+
+
+.mdc-switch__handle {
+  left: 2px !important;
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s !important;
+}
+
+.mdc-switch--checked .mdc-switch__handle {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 30px !important;
+  left: unset !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__icon {
+  border-radius: 32px !important;
+}
+
+.mdc-switch--selected .mdc-switch__handle-track {
+  transform: translateX(calc(100% - 4px)) !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__shadow {
+  box-shadow: none !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-switch__track::before {
+  background: var(--mdc-switch-unselected-track-color, #e0e0e0) !important;
+  border: solid 2px var(--mdc-switch-selected-track-color) !important;
+  // opacity: 0.7 !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__handle {
+
+  &::after,
+  &::before {
+    background: var(--mdc-switch-selected-track-color) !important;
+  }
+}
+
+.dark .mat-mdc-slide-toggle-checked .mdc-switch {
+  filter: saturate(1.4) brightness(1.3);
+}
+
+md-elevated-button::part(button) {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+
+
+
+label.click-label {
+  height: 54px !important;
+  min-height: 54px !important;
+  max-height: 54px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px;
+  font-weight: 700;
+  font-size: 21px;
+  border-radius: 30px;
+
+  &::after {
+    content: "";
+    border-left: solid 1px var(--outlineVariant) !important;
+    height: calc(100% - 40px);
+    position: absolute;
+    right: 120px;
+  }
+}
+
+.click-control {
+  padding: 0 0 0 20px !important;
+}

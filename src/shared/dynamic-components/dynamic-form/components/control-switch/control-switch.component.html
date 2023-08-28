@@ -1,0 +1,19 @@
+<label
+  class="click-label"
+  matRipple
+  [matRippleColor]="'primary'"
+  [matTooltip]="tooltip"
+  [matTooltipPosition]="tooltipPosition"
+  [matTooltipClass]="tooltipClass"
+  [attr.disabled]="disabled || null"
+  [class.disabled]="disabled || null"
+>
+  <span> {{ label }}</span>
+  <md-switch
+    class="click-control"
+    selected
+    [attr.disabled]="disabled || null"
+    [class.disabled]="disabled || null"
+  >
+  </md-switch>
+</label>

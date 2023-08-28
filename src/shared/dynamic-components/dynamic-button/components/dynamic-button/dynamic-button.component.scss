@@ -1,0 +1,24 @@
+md-elevated-button {
+    --_container-color: var(--background) !important;
+}
+
+.large {
+    // zoom: 2;
+}
+
+.extended {
+    // zoom: 1.5
+}
+
+.small {
+    // zoom: 1;
+}
+
+
+:host([disabled]),
+.disabled {
+    cursor: default !important;
+    pointer-events: none !important;
+    opacity: 0.8 !important;
+    filter: grayscale(0.3) !important;
+}
