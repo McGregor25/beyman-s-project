@@ -9,11 +9,13 @@
   [class.disabled]="disabled || null"
 >
   <span> {{ label }}</span>
-  <md-switch
+  <mat-slide-toggle
     class="click-control"
-    selected
+    color="primary"
+    [formControl]="_formControl"
+    [selected]="_formControl.value"
     [attr.disabled]="disabled || null"
     [class.disabled]="disabled || null"
   >
-  </md-switch>
+  </mat-slide-toggle>
 </label>

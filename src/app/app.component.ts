@@ -3,6 +3,7 @@ import { MaterialPaletteGeneratorService } from 'src/shared/dynamic-components/m
 import { appRootActions } from './store/actions';
 import { Store } from '@ngrx/store';
 import { defaultImage } from './image';
+import { BaseControl } from 'src/shared/dynamic-components';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,10 +12,29 @@ import { defaultImage } from './image';
 export class AppComponent implements AfterViewInit {
   title = 'beyman-s-project';
   public defaultImage: string = '';
+
+  public baseControls: BaseControl[];
   constructor(
     public materialPaletteGeneratorService: MaterialPaletteGeneratorService,
     private store: Store
-  ) {}
+  ) {
+    this.baseControls = [
+      {
+        type: 'Switch',
+        key: 'switch',
+        label: 'Input de prueba xddd', 
+        _validator_required: true,
+        col: {
+          lg: 12,
+          md: 12,
+          sm: 12,
+          xl: 12,
+          xs: 12,
+          xxl: 12,
+        },
+      },
+    ];
+  }
 
   public ngAfterViewInit(): void {
     this.defaultImage = defaultImage;

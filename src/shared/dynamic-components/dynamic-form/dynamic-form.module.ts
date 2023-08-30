@@ -19,12 +19,32 @@ import { ControlSwitchComponent } from './components/control-switch/control-swit
 import { ControlCheckboxComponent } from './components/control-checkbox/control-checkbox.component';
 import { ControlSliderComponent } from './components/control-slider/control-slider.component';
 import { ControlFileComponent } from './components/control-file/control-file.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
-  declarations: [DynamicFormComponent, ControlTextComponent, ControlSelectComponent, ControlSwitchComponent, ControlCheckboxComponent, ControlSliderComponent, ControlFileComponent],
-  exports: [DynamicFormComponent],
+  declarations: [
+    DynamicFormComponent,
+    ControlTextComponent,
+    ControlSelectComponent,
+    ControlSwitchComponent,
+    ControlCheckboxComponent,
+    ControlSliderComponent,
+    ControlFileComponent,
+  ],
+  exports: [
+    DynamicFormComponent,
+    ControlTextComponent,
+    ControlSelectComponent,
+    ControlSwitchComponent,
+    ControlCheckboxComponent,
+    ControlSliderComponent,
+    ControlFileComponent,
+  ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatIconModule,
@@ -36,6 +56,7 @@ import { ControlFileComponent } from './components/control-file/control-file.com
     MatSelectModule,
     ScrollingModule,
     MatTooltipModule,
+    MatSlideToggleModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

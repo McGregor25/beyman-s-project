@@ -1,0 +1,24 @@
+label.click-label {
+    height: 54px !important;
+    min-height: 54px !important;
+    max-height: 54px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px;
+    font-weight: 700;
+    font-size: 21px;
+    border-radius: 30px;
+
+    &::after {
+        content: "";
+        border-left: solid 1px var(--outlineVariant) !important;
+        height: calc(100% - 40px);
+        position: absolute;
+        right: 120px;
+    }
+}
+
+.click-control {
+    padding: 0 20px 0 20px !important;
+}

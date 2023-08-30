@@ -1,0 +1,28 @@
+/*
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+    &.mat-unthemed:not([disabled]) {
+        --mdc-protected-button-container-color: var(--background) !important;
+        background: var(--background) !important;
+
+        --mdc-protected-button-label-text-color: var(--onBackground) !important;
+        color: var(--onBackground) !important;
+    }
+}
+
+.mdc-button--raised,
+.mdc-button--unelevated,
+.mdc-fab {
+    &.mat-primary {
+        color: var(--onPrimary) !important;
+    }
+
+    &.mat-accent {
+        color: var(--onSecondary) !important;
+    }
+
+    &.mat-warn {
+        color: var(--onError) !important;
+    }
+} 
+*/

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TooltipPosition } from '@angular/material/tooltip';
+import { BaseControl } from '../models/dynamic-form.model';
 
 @Component({
   selector: 'control-base',
@@ -7,6 +9,8 @@ import { TooltipPosition } from '@angular/material/tooltip';
   styles: [''],
 })
 export class ControlBase {
+  @Input() public baseControl!: BaseControl;
+
   @Input() public icon!: string;
 
   @Input() public label!: string;
@@ -17,7 +21,9 @@ export class ControlBase {
 
   @Input() public tooltipClass!: string;
 
-  @Input() public disabled?: boolean;
+  @Input() public disabled!: boolean;
+
+  @Input() public _formControl!: FormControl;
 
   constructor() {}
 }

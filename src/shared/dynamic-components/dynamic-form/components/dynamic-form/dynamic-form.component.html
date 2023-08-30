@@ -20,15 +20,61 @@
 </label>
  -->
 
-<control-switch
-  label="Texto del boton"
-  tooltip="tooltip del boton"
-  [disabled]="false"
-></control-switch>
-
-<control-checkbox
+<!-- <control-checkbox
   label="Texto del boton"
   tooltip="tooltip del boton"
   [disabled]="false"
 >
-</control-checkbox>
+</control-checkbox> -->
+
+<form
+  #form="ngForm"
+  [formGroup]="formGroup"
+  [autocomplete]="autoComplete ? 'on' : 'off'"
+>
+  <ng-container
+    *ngIf="_baseControls && formGroup.controls && _baseControls.length"
+  >
+    1
+    <ng-container *ngFor="let _baseControl of _baseControls">
+      2
+      <ng-container *ngIf="_baseControl && _baseControl.type">
+        3
+        <ng-container
+          *ngIf="
+            _baseControl.key && formGroup.get(_baseControl.key.trim() || '')
+          "
+          [ngSwitch]="_baseControl.type"
+        >
+          5
+          <div
+            [hidden]="_baseControl.hidden"
+            [ngClass]="
+              'col-xxl-' +
+              (_baseControl.col?.xxl || '12') +
+              (' col-xl-' + (_baseControl.col?.xl || '12')) +
+              (' col-lg-' + (_baseControl.col?.lg || '12')) +
+              (' col-md-' + (_baseControl.col?.md || '12')) +
+              (' col-sm-' + (_baseControl.col?.sm || '12')) +
+              (' col-xs-' + (_baseControl.col?.xs || '12'))
+            "
+          >
+            <ng-container *ngSwitchCase="'Switch'">
+              <control-switch
+                label="Texto del boton"
+                tooltip="tooltip del boton"
+                [disabled]="false"
+                [_formControl]="
+                  abstractControlToFormControl(
+                    formGroup.get(_baseControl.key.trim() || '')
+                  )
+                "
+                [baseControl]="_baseControl"
+              ></control-switch>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</form>
